@@ -269,3 +269,73 @@ const restaurant = {
 
 // restaurant.orderPizza(`mushroom`, `onion`, `spinach`, `olives,`);
 // restaurant.orderPizza(`mushroom`);
+// *************************************************************************
+// *************** SHORT CIRCUITING ************************************
+// *************************************************************************
+// console.log(`----------- OR ----------`); // Returns either first TRUTHY or last
+// // Use ANY data type, return ANY data type, short-circuiting
+// console.log(3 || `Davut`);
+// console.log(`` || `Davut`);
+// console.log(true || 0);
+// console.log(undefined || null);
+
+// console.log(undefined || 0 || `Hellow` || 23 || null);
+
+// // restaurant.numGuests = 23;
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1);
+
+// const guests2 = restaurant.numGuests || 10;
+// console.log(guests2);
+
+// console.log(`----------- AND ----------`); // Returns either first FALSY or last
+// console.log(0 && `Davut`);
+// console.log(7 && `Davut`);
+// console.log(`Hellow` && 23 && null && `Davut`);
+
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza(`mushroom`, `spinach`);
+// }
+// restaurant.orderPizza && restaurant.orderPizza(`mushroom`, `spinach`);
+// *************************************************************************
+// *************** NULLISH COALESCING OPERATOR ************************************
+// *************************************************************************
+// // console.log(`----------- AND ----------`); // Returns either first NON-NULLISH or last
+// // Nullish: null and undefined
+// restaurant.numGuests = 0;
+// const guests = restaurant.numGuests || 10;
+// console.log(guests);
+
+// const guestsCorrect = restaurant.numGuests ?? 10;
+// console.log(guestsCorrect);
+// *************************************************************************
+// *************** LOGICAL ASSIGNMENT OPERATOR ************************************
+// *************************************************************************
+// const rest1 = {
+//   name: `Capri`,
+//   numGuests: 20,
+//   numGuests: 0,
+// };
+// const rest2 = {
+//   name: `La Pizza`,
+//   owner: `Giovanni Rossi`,
+// };
+
+// // OR ASSIGNMENT OPERATOR
+// // rest1.numGuests = rest1.numGuests || 10;
+// // rest2.numGuests = rest2.numGuests || 10;
+// // rest1.numGuests ||= 10;
+// // rest2.numGuests ||= 10;
+
+// // NULLISH ASSIGNMENT OPERATOR
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
+
+// // AND ASSIGNMENT OPERATOR
+// // rest1.owner = rest1.owner && `<ANONYMOUS>`;
+// // rest2.owner = rest1.owner && `<ANONYMOUS>`;
+// rest1.owner &&= `<ANONYMOUS>`;
+// rest2.owner &&= `<ANONYMOUS>`;
+
+// console.log(rest1);
+// console.log(rest2);
