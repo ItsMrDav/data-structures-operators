@@ -88,40 +88,52 @@ const mexicanFoods = new Set([
 // *************************************************************************
 // *************** DESTRUCTIRING OBJECTS ************************************
 // *************************************************************************
-// const restaurant = {
-//   name: 'Classico Italiano',
-//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
-//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-//   order: function (starterIndex, mainIndex) {
-//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-//   },
-//   orderDelivery: function ({
-//     starterIndex = 1,
-//     mainIndex = 0,
-//     time = `20:00`,
-//     address,
-//   }) {
-//     console.log(
-//       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
-//     );
-//   },
-//   openingHours: {
-//     thu: {
-//       open: 12,
-//       close: 22,
-//     },
-//     fri: {
-//       open: 11,
-//       close: 23,
-//     },
-//     sat: {
-//       open: 0, // Open 24 hours
-//       close: 24,
-//     },
-//   },
-// };
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = `20:00`,
+    address,
+  }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and, ${ing3}.`
+    );
+  },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+};
 
 // // Destructering elements of object
 // const { name, openingHours, categories } = restaurant;
@@ -171,3 +183,89 @@ const mexicanFoods = new Set([
 //   address: `Calle Sol, 14`,
 //   starterIndex: 1,
 // });
+// *************************************************************************
+// *************** SPREAD OPERATOR ************************************
+// *************************************************************************
+// // Basic Array Spread compared without using spread operator
+// const arr = [7, 8, 9];
+// const badNewArray = [1, 2, arr[0], arr[1], arr[2]];
+// const newArray = [1, 2, ...arr];
+// console.log(badNewArray, newArray);
+// console.log(newArray);
+// console.log(...newArray);
+// const newMenu = [...restaurant.mainMenu, `Gnocci`];
+// console.log(newMenu);
+
+// // Copy array
+// const mainMenuCopy = [...restaurant.mainMenu];
+// console.log(mainMenuCopy);
+
+// // Join 2 or more arrays
+// const menuX = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(menuX);
+
+// // Iterables: arrays, strings, sets, maps, NOT OBJECTS
+// const str = `Davut`;
+// const letters = [...str, ` `, `S.`];
+// console.log(letters);
+// console.log(...str);
+
+// // Real world example using spread operator with array in function parameter
+// // const ingredients = [
+// //   prompt(`Let's make pasta! Ingredient 1?`),
+// //   prompt(`Let's make pasta! Ingredient 2?`),
+// //   prompt(`Let's make pasta! Ingredient 3?`),
+// // ];
+// // console.log(ingredients);
+// // restaurant.orderPasta(...ingredients);
+
+// // Spread operator with object
+// const newRestaurant = { foundIn: 1998, ...restaurant, founder: `Gelly` };
+// console.log(newRestaurant);
+
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = `Restaurant Roma`;
+// console.log(restaurant.name);
+// console.log(restaurantCopy.name);
+// *************************************************************************
+// *************** REST OPERATOR AND PARAMETERS ************************************
+// *************************************************************************
+// // 1) FOR DESTRUCTURE EXAMPLES
+// // SPREAD OPERATOR, because on RIGHT side of =(assignment operator)
+// const arr = [1, 2, ...[3, 4]];
+// console.log(arr);
+
+// // REST OPERATOR, because on LEFT side of =(assignment operator)
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, others);
+
+// const [pizza, , risotto, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(restaurant.mainMenu);
+// console.log(restaurant.starterMenu);
+// console.log(pizza, risotto, otherFood);
+
+// // REST OPERATOR with objects
+// const { sat, ...weakDays } = restaurant.openingHours;
+// console.log(sat);
+// console.log(weakDays);
+
+// // 2) FOR FUNCTION EXAMPLES
+// const add = function (...numbers) {
+//   let sum = 0;
+//   for (let num of numbers) {
+//     sum += num;
+//   }
+//   console.log(sum);
+// };
+// add(2, 5);
+// add(5, 3, 7, 2);
+// add(8, 2, 5, 3, 2, 1, 4);
+
+// const x = [23, 5, 7];
+// add(...x);
+
+// restaurant.orderPizza(`mushroom`, `onion`, `spinach`, `olives,`);
+// restaurant.orderPizza(`mushroom`);

@@ -38,3 +38,25 @@
 // const printBookInfo = function ({ title, author, year = `year unknown` }) {
 //   console.log(`${title} by ${author}, ${year}`);
 // };
+// *************************************************************************
+// *************** SPREAD OPERATOR ************************************
+// *************************************************************************
+// const bookAuthors = [...books[0].author, ...books[1].author];
+// const spellWord = function (str) {
+//   console.log(...str);
+// };
+// spellWord(`JavaScript`);
+// *************************************************************************
+// *************** REST OPERATOR AND PARAMETERS ************************************
+// *************************************************************************
+// const [mainKeyword, ...rest] = books[0].keywords;
+
+// const { publisher: bookPublisher, ...restOfTheBook } = books[1];
+
+const printBookAuthorsCount = function (title, ...authors) {
+  console.log(title);
+  console.log(...authors);
+  console.log(`The book "${title}" has ${authors.length} authors.`);
+};
+
+printBookAuthorsCount(`Algorithms`, `Robert Sedgewick`, `Kewin Wayne`, `Dav`);
