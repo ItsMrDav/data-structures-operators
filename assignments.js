@@ -323,6 +323,164 @@ const books = [
 // *************************************************************************
 // *************** CODING CHALLENGE #1 ************************************
 // *************************************************************************
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
+// // 1
+// const [players1, players2] = game.players;
+// console.log(players1, players2);
+
+// // 2
+// const [gk1, ...fieldPlayers1] = players1;
+// const [gk2, ...fieldPlayers2] = players2;
+// console.log(gk1, fieldPlayers1);
+// console.log(gk2, fieldPlayers2);
+
+// // 3
+// const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
+
+// // 4
+// const players1Final = [...players1, `Thiago`, `Coutinho`, `Perisic`];
+// console.log(players1Final);
+
+// // 5
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
+// console.log(team1, draw, team2);
+
+// // 6
+// const printGoals = function (...names) {
+//   console.log(`Total goals: ${names.length}`);
+//   for (let name of names) {
+//     console.log(`Scored by: ${name}`);
+//   }
+// };
+// printGoals(`Davies`, `Muller`, `Lewandowski`, `Kimmich`);
+// printGoals(...game.scored);
+
+// // 7
+// team1 < team2 && console.log(`Team 1 wins...`);
+// team2 < team1 && console.log(`Team 2 wins...`);
+// team1 === team2 && console.log(`Draw...`);
+// *************************************************************************
+// *************** FOR OF LOOP ************************************
+// *************************************************************************
+// // 1
+// let pageSum = 0;
+// for (const book of books) {
+//   pageSum += book.pages;
+// }
+// console.log(typeof pageSum, pageSum);
+// // 2
+// const allAuthors = [];
+// for (const book of books) {
+//   typeof book.author === `string` && allAuthors.push(book.author);
+//   typeof book.author !== `string` && allAuthors.push(...book.author);
+// }
+// console.log(typeof allAuthors, allAuthors);
+// // 3
+// for (const [i, author] of allAuthors.entries()) {
+//   console.log(`${i + 1}. ${author}`);
+// }
+// *************************************************************************
+// *************** ENHANCED OBJECT LITERALS ************************************
+// *************************************************************************
+// // 1
+// const bookData = [
+//   ['title', 'Computer Networking: A Top-Down Approach'],
+//   ['author', ['James F. Kurose', 'Keith W. Ross']],
+//   ['publisher', 'Addison Wesley'],
+// ];
+
+// const newBook = {
+//   [bookData[0][0]]: bookData[0][1],
+//   [bookData[1][0]]: bookData[1][1],
+//   [bookData[2][0]]: bookData[2][1],
+// };
+// console.log(newBook);
+// // 2
+// const pages = 880;
+
+// const newBook2 = {
+//   title: 'The C Programming Language',
+//   author: ['Brian W. Kernighan', 'Dennis M. Ritchie'],
+//   pages,
+// };
+// console.log(newBook2);
+// *************************************************************************
+// *************** OPTIONAL CHAINING ************************************
+// *************************************************************************
+// const getFirstKeyword = function (book) {
+//   return book.keywords?.[0];
+// };
+// console.log(getFirstKeyword(books[0]));
+// *************************************************************************
+// *************** LOOPING OBJECTS: OBJECT KEYS,VALUES,ENTRIES ************************************
+// *************************************************************************
+// // 1
+// const entries = [];
+// for (const key of Object.keys(books[0].thirdParty.goodreads)) {
+//   entries.push([key]);
+// }
+// // console.log(entries);
+
+// // 2
+// for (const [index, value] of Object.values(
+//   books[0].thirdParty.goodreads
+// ).entries()) {
+//   entries[index].push(value);
+// }
+// // console.log(entries);
+
+// // 2
+// // const entries2 = [];
+// // for (const [key, value] of Object.entries(books[0].thirdParty.goodreads)) {
+// //   entries2.push([key, value]);
+// // }
+// // const entries2 = Object.entries(books[0].thirdParty.goodreads);
+// // console.log(entries2);
+// *************************************************************************
+// *************** CODING CHALLENGE #2 ************************************
+// *************************************************************************
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -363,41 +521,29 @@ const game = {
     team2: 6.5,
   },
 };
+
 // 1
-const [players1, players2] = game.players;
-console.log(players1, players2);
-
+for (const [i, scorer] of game.scored.entries()) {
+  console.log(`Goal ${i + 1}: ${scorer}`);
+}
 // 2
-const [gk1, ...fieldPlayers1] = players1;
-const [gk2, ...fieldPlayers2] = players2;
-console.log(gk1, fieldPlayers1);
-console.log(gk2, fieldPlayers2);
-
+const odds = Object.values(game.odds);
+let oddAvg = 0;
+for (const odd of odds) {
+  oddAvg += odd;
+}
+oddAvg /= odds.length;
+console.log(oddAvg);
 // 3
-const allPlayers = [...players1, ...players2];
-console.log(allPlayers);
-
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStrs = team === `` ? `draw` : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStrs} ${odd}`);
+}
 // 4
-const players1Final = [...players1, `Thiago`, `Coutinho`, `Perisic`];
-console.log(players1Final);
+const scorers = {};
 
-// 5
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
-console.log(team1, draw, team2);
+for (player of game.scored) {
+  scorers[player] = (scorers[player] || 0) + 1;
+}
 
-// 6
-const printGoals = function (...names) {
-  console.log(`Total goals: ${names.length}`);
-  for (let name of names) {
-    console.log(`Scored by: ${name}`);
-  }
-};
-printGoals(`Davies`, `Muller`, `Lewandowski`, `Kimmich`);
-printGoals(...game.scored);
-
-// 7
-team1 < team2 && console.log(`Team 1 wins...`);
-team2 < team1 && console.log(`Team 2 wins...`);
-team1 === team2 && console.log(`Draw...`);
+console.log(scorers);
