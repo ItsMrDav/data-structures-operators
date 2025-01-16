@@ -481,69 +481,150 @@ const books = [
 // *************************************************************************
 // *************** CODING CHALLENGE #2 ************************************
 // *************************************************************************
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
 
+// // 1
+// for (const [i, scorer] of game.scored.entries()) {
+//   console.log(`Goal ${i + 1}: ${scorer}`);
+// }
+// // 2
+// const odds = Object.values(game.odds);
+// let oddAvg = 0;
+// for (const odd of odds) {
+//   oddAvg += odd;
+// }
+// oddAvg /= odds.length;
+// console.log(oddAvg);
+// // 3
+// for (const [team, odd] of Object.entries(game.odds)) {
+//   const teamStrs = team === `` ? `draw` : `victory ${game[team]}`;
+//   console.log(`Odd of ${teamStrs} ${odd}`);
+// }
+// // 4
+// const scorers = {};
+
+// for (player of game.scored) {
+//   scorers[player] = (scorers[player] || 0) + 1;
+// }
+
+// console.log(scorers);
+// *************************************************************************
+// *************** SETS ************************************
+// *************************************************************************
+// // 1
+// const allKeywords = [];
+// for (const book of books) {
+//   allKeywords.push(...book.keywords);
+// }
+// console.log(allKeywords);
+// // 2
+// const uniqueKeywords = new Set(allKeywords);
+// console.log(uniqueKeywords);
+// // 3
+// uniqueKeywords.add(`coding`);
+// uniqueKeywords.add(`science`);
+// console.log(uniqueKeywords);
+// // 4
+// uniqueKeywords.delete(`business`);
+// console.log(uniqueKeywords);
+// // 5
+// const uniqueKeywordsArr = [...uniqueKeywords];
+// console.log(uniqueKeywordsArr);
+// //6
+// uniqueKeywords.clear();
+// console.log(uniqueKeywords);
+// *************************************************************************
+// *************** MAPS ************************************
+// *************************************************************************
+// // 1
+// const bookMap = new Map([
+//   [`title`, `Clean Code`],
+//   [`author`, `Robert C. Martin`],
+// ]);
+// // 2
+// bookMap.set(`pages`, 464);
+// // 3
+// console.log(`${bookMap.get(`title`)} by ${bookMap.get(`author`)}`);
+// // 4
+// console.log(bookMap.size);
+// // 5
+// bookMap.has(`author`) && console.log(`The author of the book is known`);
+// *************************************************************************
+// *************** MAPS ITERATION ************************************
+// *************************************************************************
+// const firstBook = new Map(Object.entries(books[0]));
+// console.log(firstBook);
+// for (const [key, value] of firstBook) {
+//   //   typeof key === `number` && console.log(`${key}: ${value}`);
+//   typeof key === `string` && console.log(`${key}: ${value}`);
+// }
+// *************************************************************************
+// *************** CODING CHALLENGE #3 ************************************
+// *************************************************************************
+const gameEvents = new Map([
+  [17, `⚽️ GOAL`],
+  [36, `🔁 Substitution`],
+  [47, `⚽️ GOAL`],
+  [61, `🔁 Substitution`],
+  [64, `♦️ Yellow card`],
+  [70, `🔁 Substitution`],
+  [72, `🔁 Substitution`],
+  [76, `⚽️ GOAL`],
+  [80, `⚽️ GOAL`],
+  [92, `♦️ Yellow card`],
+]);
 // 1
-for (const [i, scorer] of game.scored.entries()) {
-  console.log(`Goal ${i + 1}: ${scorer}`);
-}
+const events = [...new Set(gameEvents.values())];
+console.log(events);
 // 2
-const odds = Object.values(game.odds);
-let oddAvg = 0;
-for (const odd of odds) {
-  oddAvg += odd;
-}
-oddAvg /= odds.length;
-console.log(oddAvg);
+gameEvents.delete(64);
+console.log(gameEvents);
 // 3
-for (const [team, odd] of Object.entries(game.odds)) {
-  const teamStrs = team === `` ? `draw` : `victory ${game[team]}`;
-  console.log(`Odd of ${teamStrs} ${odd}`);
-}
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes.`
+);
 // 4
-const scorers = {};
-
-for (player of game.scored) {
-  scorers[player] = (scorers[player] || 0) + 1;
+for (const [time, event] of gameEvents) {
+  console.log(
+    `${time <= 45 ? `[FIRST HALF]` : `[SECOND HALF]`} ${time}: ${event}`
+  );
 }
-
-console.log(scorers);

@@ -1,26 +1,26 @@
 'use strict';
 
-// Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+// // Data needed for a later exercise
+// const flights =
+//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-const italianFoods = new Set([
-  'pasta',
-  'gnocchi',
-  'tomatoes',
-  'olive oil',
-  'garlic',
-  'basil',
-]);
+// const italianFoods = new Set([
+//   'pasta',
+//   'gnocchi',
+//   'tomatoes',
+//   'olive oil',
+//   'garlic',
+//   'basil',
+// ]);
 
-const mexicanFoods = new Set([
-  'tortillas',
-  'beans',
-  'rice',
-  'tomatoes',
-  'avocado',
-  'garlic',
-]);
+// const mexicanFoods = new Set([
+//   'tortillas',
+//   'beans',
+//   'rice',
+//   'tomatoes',
+//   'avocado',
+//   'garlic',
+// ]);
 
 // Data needed for first part of the section
 // const restaurant = {
@@ -424,3 +424,168 @@ const restaurant = {
 // for (const [key, { open, close }] of entries) {
 //   console.log(`On ${key} we open at ${open} and close at ${close}`);
 // }
+// *************************************************************************
+// *************** SETS ************************************
+// *************************************************************************
+// BASIC DIFFERENCE than array: They cannot have duplicate elements
+// // Create new Set
+// const ordersSet = new Set([
+//   `Pasta`,
+//   `Pizza`,
+//   `Pizza`,
+//   `Risotto`,
+//   `Pasta`,
+//   `Pizza`,
+// ]);
+// console.log(ordersSet);
+
+// console.log(new Set(`Davut`));
+// console.log(new Set());
+
+// // has,add,delete,clear methods
+// console.log(ordersSet.size);
+// console.log(ordersSet.has(`Pizza`));
+// console.log(ordersSet.has(`Bread`));
+// ordersSet.add(`Garlic Bread`);
+// ordersSet.add(`Garlic Bread`);
+// ordersSet.delete(`Risotto`);
+// // ordersSet.clear();
+// console.log(ordersSet);
+
+// for (const order of ordersSet) console.log(order);
+
+// // Example: removing duplicates from array
+// const staff = [`Waiter`, `Chef`, `Waiter`, `Manager`, `Chef`, `Waiter`];
+// const staffUnique = [...new Set(staff)];
+// console.log(staff);
+// console.log(staffUnique);
+// console.log(
+//   new Set([`Waiter`, `Chef`, `Waiter`, `Manager`, `Chef`, `Waiter`]).size
+// );
+// console.log(new Set(`davutsimsek`).size);
+// *************************************************************************
+// *************** NEW METHODS TO MAKE SETS USEFUL ************************************
+// *************************************************************************
+// const italianFoods = new Set([
+//   'pasta',
+//   'gnocchi',
+//   'tomatoes',
+//   'olive oil',
+//   'garlic',
+//   'basil',
+// ]);
+
+// const mexicanFoods = new Set([
+//   'tortillas',
+//   'beans',
+//   'rice',
+//   'tomatoes',
+//   'avocado',
+//   'garlic',
+// ]);
+
+// // Intersection method (gives common elements between sets)
+// const commonFoods = italianFoods.intersection(mexicanFoods);
+// console.log(`Intersection:`, commonFoods);
+// console.log(...commonFoods);
+
+// // Union method (Combine two sets with unique values)
+// const italianMexicanFusion = italianFoods.union(mexicanFoods);
+// console.log(italianMexicanFusion);
+
+// const x = new Set([...italianFoods, ...mexicanFoods]); // Doing it without union method
+// console.log(x);
+
+// // Difference method (gives unique elements of 1st set compared to 2nd set)
+// const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
+// console.log(`Difference Italian:`, uniqueItalianFoods);
+
+// const uniqueMexicanFoods = mexicanFoods.difference(italianFoods);
+// console.log(`Diffrence Mexican:`, uniqueMexicanFoods);
+
+// // Symmetricdifference method (gives unique elements between sets)
+// const uniqueItalianAndMexicanFoods =
+//   italianFoods.symmetricDifference(mexicanFoods);
+// console.log(uniqueItalianAndMexicanFoods);
+
+// // isDisjointFrom method (compared 1st to second if completly unique)
+// console.log(italianFoods.isDisjointFrom(mexicanFoods));
+// *************************************************************************
+// *************** MAPS ************************************
+// *************************************************************************
+// // BASIC DIFFERENCE than objects: They can have any types of keys(number,boolean,array,object etc.)
+// // Creating map
+// const rest = new Map();
+// rest.set(`name`, `Classico Italiano`);
+// rest.set(1, `Firenze, Italy`);
+// console.log(rest.set(2, `Lisbon, Portugal`));
+
+// // Set Method
+// rest
+//   .set(`categories`, ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+//   .set(`open`, 11)
+//   .set(`close`, 23)
+//   .set(true, `We are open`)
+//   .set(false, `We are closed`);
+// // Get Method
+// console.log(rest.get(`name`));
+// console.log(rest.get(true));
+// console.log(rest.get(false));
+// console.log(rest.get(`categories`));
+
+// const time = 21;
+// console.log(rest.get(time > rest.get(`open`) && time < rest.get(`close`)));
+// // Has Method
+// console.log(rest.has(`categories`));
+// // Delete Method
+// rest.delete(2);
+// console.log(rest);
+// // Size Method
+// console.log(rest.size);
+// // Clear Method
+// // rest.clear();
+// // Example
+// const arr = [1, 2];
+// rest.set(arr, `Test`);
+// rest.set(document.querySelector(`h1`), `Heading`);
+// console.log(rest);
+// console.log(rest.size);
+
+// console.log(rest.get(arr));
+// *************************************************************************
+// *************** MAPS ITERATION ************************************
+// *************************************************************************
+// const question = new Map([
+//   [`question`, `What is the best programming language of the world?`],
+//   [1, `C`],
+//   [2, `Java`],
+//   [3, `JavaScript`],
+//   [`correct`, 3],
+//   [true, `Correct`],
+//   [false, `Try again`],
+// ]);
+
+// console.log(question);
+// console.log(openingHours);
+
+// // Convert object to map
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
+
+// // Quiz app with map iteration
+// console.log(question.get(`question`));
+// for (const [key, value] of question) {
+//   typeof key === `number` && console.log(`Answer ${key}: ${value}`);
+// }
+
+// // const answer = Number(prompt(`Your answer?`));
+// const answer = 3;
+// console.log(answer);
+
+// console.log(question.get(question.get(`correct`) === answer));
+
+// // Convert map to array
+// console.log(...question);
+// // Map also have access to keys and values
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
