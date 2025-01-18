@@ -600,31 +600,192 @@ const books = [
 // *************************************************************************
 // *************** CODING CHALLENGE #3 ************************************
 // *************************************************************************
-const gameEvents = new Map([
-  [17, `⚽️ GOAL`],
-  [36, `🔁 Substitution`],
-  [47, `⚽️ GOAL`],
-  [61, `🔁 Substitution`],
-  [64, `♦️ Yellow card`],
-  [70, `🔁 Substitution`],
-  [72, `🔁 Substitution`],
-  [76, `⚽️ GOAL`],
-  [80, `⚽️ GOAL`],
-  [92, `♦️ Yellow card`],
-]);
-// 1
-const events = [...new Set(gameEvents.values())];
-console.log(events);
-// 2
-gameEvents.delete(64);
-console.log(gameEvents);
-// 3
-console.log(
-  `An event happened, on average, every ${90 / gameEvents.size} minutes.`
-);
-// 4
-for (const [time, event] of gameEvents) {
-  console.log(
-    `${time <= 45 ? `[FIRST HALF]` : `[SECOND HALF]`} ${time}: ${event}`
-  );
+// const gameEvents = new Map([
+//   [17, `⚽️ GOAL`],
+//   [36, `🔁 Substitution`],
+//   [47, `⚽️ GOAL`],
+//   [61, `🔁 Substitution`],
+//   [64, `♦️ Yellow card`],
+//   [70, `🔁 Substitution`],
+//   [72, `🔁 Substitution`],
+//   [76, `⚽️ GOAL`],
+//   [80, `⚽️ GOAL`],
+//   [92, `♦️ Yellow card`],
+// ]);
+// // 1
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
+// // 2
+// gameEvents.delete(64);
+// console.log(gameEvents);
+// // 3
+// console.log(
+//   `An event happened, on average, every ${90 / gameEvents.size} minutes.`
+// );
+// // 4
+// for (const [time, event] of gameEvents) {
+//   console.log(
+//     `${time <= 45 ? `[FIRST HALF]` : `[SECOND HALF]`} ${time}: ${event}`
+//   );
+// }
+// *************************************************************************
+// *************** STRINGS - 1 ************************************
+// *************************************************************************
+// // 1
+// const x4 = books[0].ISBN[4];
+// const x6 = books[0].ISBN[6];
+// const x8 = books[0].ISBN[8];
+// const x9 = books[0].ISBN[9];
+// console.log(`${x4}${x6}${x8}${x9}`);
+
+// // 2
+// const quote =
+//   'A computer once beat me at chess, but it was no match for me at kick boxing';
+// console.log(quote.indexOf(`chess`));
+
+// // 3
+// console.log(quote.slice(quote.indexOf(`boxing`)));
+// console.log(quote.slice(quote.lastIndexOf(` `) + 1));
+
+// // 4
+// const isContributor = function (author) {
+//   return author.lastIndexOf(`(Contributor)`) !== -1;
+// };
+// console.log(isContributor('Julie Sussman (Contributor)'));
+// *************************************************************************
+// *************** STRINGS - 2 ************************************
+// *************************************************************************
+// // 1
+// const normalizeAuthorName = author => {
+//   author = author.trim();
+//   const firstName = author.slice(0, author.indexOf(` `));
+
+//   let lastName = ``;
+//   if (author.indexOf(` `) === author.lastIndexOf(` `)) {
+//     lastName = author.slice(author.indexOf(` `) + 1, author.length);
+//   } else {
+//     lastName = author.slice(author.indexOf(` `) + 1, author.lastIndexOf(` `));
+//   }
+
+//   const capitalizedFirstName =
+//     firstName[0].toUpperCase() + firstName.slice(1).toLowerCase();
+//   const capitalizedLastName =
+//     lastName[0].toUpperCase() + lastName.slice(1).toLowerCase();
+
+//   return `${capitalizedFirstName} ${capitalizedLastName}`;
+// };
+// console.log(normalizeAuthorName('  JuliE sussMan (Contributor)'));
+
+// // 2
+// const newBookTitle = books[1].title.replaceAll(`Programs`, `Software`);
+// console.log(books[1].title);
+// console.log(newBookTitle);
+
+// // 3
+// const logBookTheme = title => {
+//   title = title.toLowerCase();
+//   if (title.startsWith(`computer`)) {
+//     console.log(`This book is about computers`);
+//   } else if (title.includes(`algorithms`) && title.includes(`structures`)) {
+//     console.log(`This book is about algorithms and data structures`);
+//   } else if (title.endsWith(`system`) || title.endsWith(`systems`)) {
+//     if (title.includes(`operating`)) {
+//       console.log(
+//         `This book is about some systems, but definitely not about operating systems`
+//       );
+//     }
+//   }
+// };
+
+// console.log(`--------------------------------`);
+// logBookTheme(books[0].title);
+// logBookTheme(books[1].title);
+// logBookTheme(books[2].title);
+// logBookTheme(books[3].title);
+// logBookTheme(books[4].title);
+// logBookTheme(books[5].title);
+// logBookTheme(books[6].title);
+// logBookTheme(books[7].title);
+// *************************************************************************
+// *************** STRINGS - 3 ************************************
+// *************************************************************************
+// // 1
+// const logBookCategories = string => {
+//   const arr = string.split(`;`);
+//   for (const c of arr) {
+//     console.log(c);
+//   }
+// };
+// const bookCategories =
+//   'science;computing;computer science;algorithms;business;operating systems;networking;electronics';
+// logBookCategories(bookCategories);
+// // 2
+// const getKeywordsAsString = books => {
+//   const arr = [];
+//   for (const book of books) {
+//     arr.push(...book.keywords);
+//   }
+//   const arrUnique = [...new Set(arr)];
+//   return arrUnique.join(`;`);
+// };
+// console.log(getKeywordsAsString(books));
+// // 3
+// const logBookChapters = arr => {
+//   for (const [book, page] of arr) {
+//     console.log(`${String(book).padEnd(20, `_`)} ${page}`);
+//   }
+// };
+
+// const bookChapters = [
+//   ['The Basics', 14],
+//   ['Sorting', 254],
+//   ['Searching', 372],
+//   ['Graphs', 526],
+//   ['Strings', 706],
+// ];
+// logBookChapters(bookChapters);
+// *************************************************************************
+// *************** CODING CHALLENGE #4 ************************************
+// *************************************************************************
+// document.body.append(document.createElement(`textarea`));
+// document.body.append(document.createElement(`button`));
+// const textarea = document.querySelector(`textarea`);
+
+// const addText = function (text) {
+//   textarea.value += (textarea.value ? `\n` : '') + text;
+// };
+// addText(`underscore_case`);
+// addText(` first_name`);
+// addText(`Some_Variable`);
+// addText(`  calculate_AGE`);
+// addText(`delayed_departure`);
+
+// // Conversion
+// document.querySelector(`button`).addEventListener(`click`, function () {
+//   const arr = textarea.value.split(`\n`);
+//   console.log(arr);
+//   for (const [i, twoWord] of arr.entries()) {
+//     const [first, second] = twoWord.trim().toLowerCase().split(`_`);
+//     const str = `${first}${second.replace(second[0], second[0].toUpperCase())}`;
+//     const endStr = `${str.padEnd(20)}${`✅`.repeat(i + 1)}`;
+//     console.log(endStr);
+//   }
+// });
+// *************************************************************************
+// *************** EXTRA EXERCISE ************************************
+// *************************************************************************
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+const getCode = str => str.slice(0, 3).toUpperCase();
+for (const [i, flight] of flights.split(`+`).entries()) {
+  const [type, from, to, time] = flight.split(`;`);
+  const output = `${type.startsWith(`_Delayed`) ? `🛑` : ``}${type.replaceAll(
+    `_`,
+    ` `
+  )} from ${getCode(from)} to ${getCode(to)} (${time.replace(
+    `:`,
+    `h`
+  )})`.padStart(45);
+  console.log(output);
 }

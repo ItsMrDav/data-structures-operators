@@ -88,66 +88,65 @@
 // *************************************************************************
 // *************** DESTRUCTIRING OBJECTS ************************************
 // *************************************************************************
-const weekdays = [`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`];
+// const weekdays = [`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`];
 
-const openingHours = {
-  [weekdays[3]]: {
-    open: 12,
-    close: 22,
-  },
-  [weekdays[4]]: {
-    open: 11,
-    close: 23,
-  },
-  [weekdays[5]]: {
-    open: 0, // Open 24 hours
-    close: 24,
-  },
-};
+// const openingHours = {
+//   [weekdays[3]]: {
+//     open: 12,
+//     close: 22,
+//   },
+//   [weekdays[4]]: {
+//     open: 11,
+//     close: 23,
+//   },
+//   [weekdays[5]]: {
+//     open: 0, // Open 24 hours
+//     close: 24,
+//   },
+// };
 
-const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+// const restaurant = {
+//   name: 'Classico Italiano',
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  order(starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-  orderDelivery({ starterIndex = 1, mainIndex = 0, time = `20:00`, address }) {
-    console.log(
-      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
-    );
-  },
+//   order(starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
+//   orderDelivery({ starterIndex = 1, mainIndex = 0, time = `20:00`, address }) {
+//     console.log(
+//       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+//     );
+//   },
 
-  orderPasta(ing1, ing2, ing3) {
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2} and, ${ing3}.`
-    );
-  },
+//   orderPasta(ing1, ing2, ing3) {
+//     console.log(
+//       `Here is your delicious pasta with ${ing1}, ${ing2} and, ${ing3}.`
+//     );
+//   },
 
-  orderPizza(mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient);
-    console.log(otherIngredients);
-  },
-  // ES6 Enchanced Object Literals
-  openingHours,
-  // openingHours: {
-  //   thu: {
-  //     open: 12,
-  //     close: 22,
-  //   },
-  //   fri: {
-  //     open: 11,
-  //     close: 23,
-  //   },
-  //   sat: {
-  //     open: 0, // Open 24 hours
-  //     close: 24,
-  //   },
-  // },
-};
+//   orderPizza(mainIngredient, ...otherIngredients) {
+//     console.log(mainIngredient);
+//     console.log(otherIngredients);
+//   },
+// ES6 Enchanced Object Literals
+// openingHours: {
+//   thu: {
+//     open: 12,
+//     close: 22,
+//   },
+//   fri: {
+//     open: 11,
+//     close: 23,
+//   },
+//   sat: {
+//     open: 0, // Open 24 hours
+//     close: 24,
+//   },
+// },
+// };
 
 // // Destructering elements of object
 // const { name, openingHours, categories } = restaurant;
@@ -589,3 +588,161 @@ const restaurant = {
 // // Map also have access to keys and values
 // console.log([...question.keys()]);
 // console.log([...question.values()]);
+// *************************************************************************
+// *************** STRINGS - 1 ************************************
+// *************************************************************************
+// const airline = `TAP Air Portugal`;
+// const plane = `A320`;
+
+// console.log(plane[0]);
+// console.log(plane[1]);
+// console.log(plane[2]);
+// console.log(`B737`[0]);
+
+// console.log(airline.length);
+// console.log(`B737`.length);
+
+// // indexOf Method (GET index OR -1)
+// console.log(airline.indexOf(`r`));
+
+// // lastIndexOf Method (GET index OR -1)
+// console.log(airline.lastIndexOf(`r`));
+// console.log(airline.indexOf(`Portugal`));
+
+// // slice Method
+// console.log(airline.slice(4));
+// console.log(airline.slice(-4));
+// console.log(airline.slice(4, 7));
+
+// console.log(airline.slice(0, airline.indexOf(` `)));
+// console.log(airline.slice(airline.lastIndexOf(` `) + 1));
+
+// console.log(airline.slice(1, -1));
+
+// const checkMiddleSeat = function (seat) {
+//   // B and E are middle seats
+//   const s = seat.slice(-1);
+//   if (s === `B` || s === `E`) {
+//     console.log(`You got the middle seat.`);
+//   } else {
+//     console.log(`You got lucky.`);
+//   }
+// };
+
+// checkMiddleSeat(`11B`);
+// checkMiddleSeat(`23C`);
+// checkMiddleSeat(`3E`);
+
+// console.log(new String(`davut`));
+// console.log(typeof new String(`davut`));
+// console.log(typeof new String(`davut`).slice(1));
+// *************************************************************************
+// *************** STRINGS - 2 ************************************
+// *************************************************************************
+// // toLowerCase, toUpperCase
+// console.log(airline.toLowerCase());
+// console.log(airline.toUpperCase());
+
+// // Example: Fix capitalization in name
+// const passenger = `dAvUT`;
+// const passengerLower = passenger.toLowerCase();
+// const passengerCorrect =
+//   passengerLower[0].toUpperCase() + passengerLower.slice(1);
+// console.log(passengerCorrect);
+
+// // Example: Comparing emails
+// const email = `hello@davut.io`;
+// const loginEmail = ` Hello@Davut.Io \n`;
+
+// // trim method
+// const normalEmail = email => {
+//   console.log(email.toLowerCase().trim());
+// };
+// normalEmail(loginEmail);
+
+// // replace method
+// const priceGB = `222,97£`;
+// const priceUS = priceGB.replace(`£`, `$`).replace(`,`, `.`);
+// console.log(priceUS);
+
+// const announcement = `All passengers come to boarding door 23. Boarding door 23!`;
+// console.log(announcement.replaceAll(`door`, `gate`));
+
+// // Methods return BOOLEAN
+// const plane1 = `Airbus A320neo`;
+// console.log(plane1.includes(`A320`));
+// console.log(plane1.includes(`Boeing`));
+// console.log(plane1.startsWith(`Airb`));
+// console.log(plane1.endsWith(`Airb`));
+
+// if (plane1.startsWith(`Airbus`) && plane1.endsWith(`neo`)) {
+//   console.log(`Part of the NEW Airbus family.`);
+// }
+
+// // Example:
+// const checkBAggage = items => {
+//   // const baggage = items;
+//   const baggage = items.toLowerCase();
+//   if (baggage.includes(`knife`) || baggage.includes(`gun`)) {
+//     console.log(`You are NOT allowed on board`);
+//   } else {
+//     console.log(`Welcome abord!`);
+//   }
+// };
+// checkBAggage(`I have a laptop, some Food and a pocket Knife`);
+// checkBAggage(`Socks and camera`);
+// checkBAggage(`Got some snacks and a gun for protection`);
+// *************************************************************************
+// *************** STRINGS - 3 ************************************
+// *************************************************************************
+// // split and join method
+// console.log(`a+very+nic+string`.split(`+`));
+// console.log(`Davut Simsek`.split(` `));
+
+// const [firstName, lastName] = `Davut Simsek`.split(` `);
+
+// // join method to turn Array into a String
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(` `);
+// console.log(newName);
+
+// // Example:
+// const capitilazeName = names => {
+//   const arr = names.toLowerCase().split(` `);
+//   let arrResult = [];
+//   for (const n of arr) {
+//     // arrResult.push(n[0].toUpperCase() + n.slice(1));
+//     arrResult.push(n.replace(n[0], n[0].toUpperCase()));
+//   }
+
+//   console.log(arrResult);
+// };
+// capitilazeName(`jessi anN smIth davis`);
+// capitilazeName(`dAVut simSEk`);
+
+// // padding method
+// const message = `Go to gate 23!`;
+// console.log(message.padStart(25, `+`).padEnd(30, `+`));
+// console.log(`Davut`.padStart(25, `-`).padEnd(30, `+`));
+
+// // Example:
+// const maskCreditCard = number => {
+//   const str = String(number);
+//   const last = str.slice(-4);
+//   return last.padStart(16, `*`);
+// };
+
+// console.log(maskCreditCard(41413131231));
+// console.log(maskCreditCard(`8123136542525312312`));
+// console.log(maskCreditCard(`812312313111`));
+
+// // repeat method
+// const message2 = `Bad weather... All Departures Delayed... `;
+// console.log(message2.repeat(2));
+
+// // Example
+// const planesInLine = n => {
+//   console.log(`There are ${n} planes in line ${`✈️`.repeat(n)}`);
+// };
+// planesInLine(5);
+// planesInLine(2);
+// planesInLine(13);
